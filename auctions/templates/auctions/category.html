@@ -1,0 +1,41 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <a class="nav-link" href="{% url 'category' 'Arts' %}">Arts and Crafts Supplies</a>
+      <a class="nav-link" href="{% url 'category' 'Baby' %}">Baby and Child Products</a>
+      <a class="nav-link" href="{% url 'category' 'Clothing'%}">Clothing</a>
+      <a class="nav-link" href="{% url 'category' 'Consumer' %}">Consumer Electronics</a>
+      <a class="nav-link" href="{% url 'category' 'Household' %}">Household</a>
+      <a class="nav-link" href="{% url 'category' 'Media' %}">Media and Entertainment</a>
+      <a class="nav-link" href="{% url 'category' 'Other' %}">Other</a>
+      <a class="nav-link" href="{% url 'category' 'Personal' %}">Personal Care Products</a>
+      <a class="nav-link" href="{% url 'category' 'Retail' %}">Retail</a>
+      <a class="nav-link" href="{% url 'category' 'Sporting' %}">Sporting Goods and Equipment</a>
+      <a class="nav-link" href="{% url 'category' 'Toys' %}">Toys</a>
+      <a class="nav-link" href="{% url 'category' 'Travel' %}">Travel and Tourism</a>
+    </div>
+  </div>
+    <div class="row justify-content-around border-top pt-3 mt-4 mx-0">
+      {% for passenger in listing %}
+        <div class="card col-3 m-2" style="width: 18rem;">
+          {% if  passenger.image == "" %}
+            <img class="card-img-top image" src="../../static/image-not-found.jpg" alt="Card image cap">
+            {% else %}
+            <img class="card-img-top image" src="{{ passenger.image }}" alt="Card image cap">
+            {% endif %}
+            <div class="card-body">
+              <div class="row justify-content-between mx-0">
+                <h5 class="card-title">{{ passenger.title }}</h5>
+                <h5 class="card-title">${{passenger.highest_bid }}</h5>
+              </div>
+              <p class="card-text">{{ passenger.description }}</p>
+              <a href="{% url 'listing' passenger.id %}" class="btn btn-primary">See Listing</a>
+            </div>
+        </div>
+      {% empty %}
+
+      {% endfor %}
+    </div>
+{% endblock %}

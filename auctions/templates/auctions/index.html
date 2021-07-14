@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    <div class="row justify-content-around">
+      {% for passenger in listing %}
+        <div class="card col-3 m-2" style="width: 18rem;">
+          {% if  passenger.image == "" %}
+            <img class="card-img-top image" src="../../static/image-not-found.jpg" alt="Card image cap">
+            {% else %}
+            <img class="card-img-top image" src="{{ passenger.image }}" alt="Card image cap">
+            {% endif %}
+            <div class="card-body">
+              <div class="row justify-content-between mx-0">
+                <h5 class="card-title">{{ passenger.title }}</h5>
+                <h5 class="card-title">${{passenger.highest_bid }}</h5>
+              </div>
+              <p class="card-text">{{ passenger.description }}</p>
+              <a href="{% url 'listing' passenger.id %}" class="btn btn-primary">See Listing</a>
+            </div>
+        </div>
+      {% empty %}
+
+      {% endfor %}
+    </div>
+{% endblock %}

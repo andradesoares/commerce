@@ -1,0 +1,22 @@
+body {
+    padding: 40px;
+}
+.nav-link{
+    padding-left: 0px;
+}
+
+.lineheight{
+    padding:2px!important;
+    line-height: 22px!important;
+    height: 27px!important;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+.image{
+    max-height: 164px!important;
+}
+
+.image2{
+    max-height: 275px!important;
+}
